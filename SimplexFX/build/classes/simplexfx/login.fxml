@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="simplexfx.SimplexFX"> 
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="400.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@best%20copy.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="72.0" fitWidth="200.0" layoutX="118.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@login.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="username" layoutX="66.0" layoutY="135.0" prefHeight="25.0" prefWidth="232.0" />
+            <Button layoutX="56.0" layoutY="279.0" mnemonicParsing="false" onAction="#EfectueazaLogin" prefHeight="53.0" prefWidth="254.0" style="-fx-background-color: black;" text="Login" textFill="WHITE" />
+            <CheckBox layoutX="67.0" layoutY="246.0" mnemonicParsing="false" text="Amintește user și parola" />
+            <Label layoutX="99.0" layoutY="98.0" text="Nume de utilizator">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="152.0" layoutY="177.0" text="Parola">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Button layoutX="55.0" layoutY="340.0" mnemonicParsing="false" onAction="#DeschideFormLogin" prefHeight="30.0" prefWidth="254.0" style="-fx-background-color: green;" text="Înregistrare" textFill="WHITE" />
+            <PasswordField fx:id="password" layoutX="66.0" layoutY="209.0" prefHeight="31.0" prefWidth="231.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
