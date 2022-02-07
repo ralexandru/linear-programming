@@ -20,13 +20,13 @@ Database: MySQL<br/>
 Interface: JavaFX
 
 <h3>Description of the project</h3>
-------------------br/>
+------------------<br/>
 Inside this repository you will find the whole project of the Simplex implementation using Java. The class created in order to solve LP problems using Simplex is the SimpexTest class.<br/>
 The project also contains a GUI and a login/register system that connects to a database.<br/>
 Password are encrypted using the EncryptPassword class and the connection to the database is made using the Database class.<br/>
 You are free to use this code in a public presentation/conference or any other place, but don't forget to put a link to this repository into your bibliography.
 <h3>Short description of the implementation</h3>
-------------------br/>
+------------------<br/>
 1. The implementation follows the mathematical method step by step.<br/>
 2. The SimplexTest class needs an objective function, an optimum type, a system of restraints and the initial base in order to run.
 3. In order to find the initial base we have to bring the function to the standard form, by adding ecart variables based on the restrictions of each equation in the restraint's system of equations.<br/>
