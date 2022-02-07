@@ -1,6 +1,9 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMain.java to edit this template
+    This project was created by RĂDUCU Alexandru-Florian for a conference that took place on 08/12/2021
+    If you have any questions related to this code, feel free to contact me using the methods below:
+        - via mail : raducu.alexandrudev@gmail.com
+   Feel free to use this code, but don't forget about the credits.
+   If you're going to use this code, link this repository to your bibliography.
  */
 package simplexfx;
 
@@ -20,7 +23,7 @@ import javafx.scene.layout.*;
 import javax.swing.JOptionPane;
 /**
  *
- * @author corei3
+ * @author RĂDUCU Alexandru-Florian
  */
 public class SimplexFX extends Application {
     Stage openStage;
