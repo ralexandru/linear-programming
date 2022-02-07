@@ -19,7 +19,7 @@ public class EncryptPassword {
     private static final int KEY_LENGTH = 512;
     private static final String ALGORITHM = "PBKDF2WithHmacSHA512";
     
-    public static Optional<String> generateSalt(final int length){
+    public static Optional<String> generateSalt(final int length){ // Generates a salt
         if(length<1){
             System.out.println("Error trying to generate salt: Salt length needs to be > 0");
             return Optional.empty();
@@ -29,7 +29,7 @@ public class EncryptPassword {
         return Optional.of(Base64.getEncoder().encodeToString(salt));
     }
     
-    public static Optional<String> hashPassword(String password, String salt){
+    public static Optional<String> hashPassword(String password, String salt){ // Hashes the password
         char[] chars = password.toCharArray();
         byte[] bytes = salt.getBytes();
         PBEKeySpec spec = new PBEKeySpec(chars, bytes, ITERATIONS, KEY_LENGTH);
@@ -47,7 +47,7 @@ public class EncryptPassword {
         }
     }
     
-    public static boolean verifyPassword (String password, String key, String salt) {
+    public static boolean verifyPassword (String password, String key, String salt) { // Verifies if password hashes are the same
         Optional<String> optEncrypted = hashPassword(password, salt);
         if (!optEncrypted.isPresent()) return false;
             return optEncrypted.get().equals(key);
