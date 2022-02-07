@@ -40,31 +40,31 @@ public class SimplexTest {
     }
     
     private void rezolva(){
-        while(true){ // Se ruleaza cat timp solutia nu este optima
-            checkOptimal(); // Calculeaza diferentele
+        while(true){ // Runs while optimum criteria requirement is not met
+            checkOptimal(); // Checks if the optimum criteria requirement is met
             double[][] it = new double[tabelSimplex.length][tabelSimplex[0].length];
             for(int i = 0; i<tabelSimplex.length;i++)
                 for(int j = 0; j <tabelSimplex[0].length;j++)
                     it[i][j]=round(tabelSimplex[i][j],2);
-            iteratii.add(it); // Adauga iteratia curenta in lista de iteratii pentru a o vizualiza in TableView
-            show(); // Afiseaza iteratia curenta in consola
+            iteratii.add(it); // Adds the current iteration to a list in order to view all the iterations inside a TableView in the GUI later
+            show(); // Prints the current iteration in console
             int q = 0;     
             if(maxOrMin){
-                q = dantzig(); // Pentru maxim -> afla maximul dintre diferentele cj-fj
+                q = dantzig(); // For maximum -> Calculates the differences between Cj and Fj
             }
             else
-                q = dantzigNegative(); // Pentru minim
+                q = dantzigNegative(); // For minimum
             if(q==-1)
                 break;
-            int p = minRatioRule(q); // afla linia vectorului care va iesi din baza realizand raportul dintre solutia de baza i si elementul de pe coloana q si linia i
-            if(p==-1){ // daca toate elementele de pe coloana pivotului sunt egale sau mai mici decat 0
+            int p = minRatioRule(q); // Finds the line of the vector that will leave the base(calculating the raport between the current base solution and the element from the column q and line i)
+            if(p==-1){ // p == -1 if all the elements from the pivot's column are <= 0
                 unbounded =true;
                 throw new ArithmeticException("Problema de programare liniara este unbounded..");
             }
             System.out.println("Linia pivotului este: " + p);
             System.out.println("Coloana pivotului este: " + q);
-            pivot(p,q); // Calculeaza elementele iteratiei urmatoare folosind metoda Gauss-Jordan
-           baza[p]=q; // Vectorul p paraseste baza, iar vectorul p intra in baza
+            pivot(p,q); // Calculates the elements of the next iteration using Gauss-Jordan method
+           baza[p]=q; // Vector p leaves the base, vector q enters the base
            int[] baze = new int[baza.length-1];
            System.arraycopy(baza, 0, baze, 0, baze.length);
            istoricBaze.add(baze);
@@ -76,11 +76,11 @@ public class SimplexTest {
         int q = 0;
         for(int j = 1; j< vA + nrVariabile; j++)
             if(tabelSimplex[nrRestrictii][j]>tabelSimplex[nrRestrictii][q])
-                q=j; // afla maximul dintre diferente
+                q=j; // finds the maximum between the differences
         if(tabelSimplex[nrRestrictii][q] <= 0)
-            return -1; // este optim
+            return -1; // solution met the optimum criteria
         else
-            return q; // returneaza maximul
+            return q; // return the maximum
    }
     
     private int dantzigNegative(){
@@ -89,7 +89,7 @@ public class SimplexTest {
             if(tabelSimplex[nrRestrictii][j]<tabelSimplex[nrRestrictii][q])
                 q=j;
         if(tabelSimplex[nrRestrictii][q] >= 0)
-            return -1; // este optim
+            return -1; // solution is optimum
         else
             return q;
     }
@@ -130,7 +130,7 @@ public class SimplexTest {
         return optim;
     }
     private void pivot(int p, int q){          
-        // Calculeaza folosind metoda dreptunghiului
+        // Calculates using the rectangle method
         for(int i = 0; i < nrRestrictii; i++){
             for(int j = 0; j < tabelSimplex[0].length; j++){
                 if(i!=p && j!=q)
@@ -140,22 +140,22 @@ public class SimplexTest {
         
          System.out.println("Valoarea optima este: "+vfint());
                  
-        // Imparte linia pivotului la pivot
+        // Divids the pivot's line to the pivot
        for(int j = 0; j < tabelSimplex[0].length;j++)
            if (j!=q)
                 tabelSimplex[p][j] /=tabelSimplex[p][q];
-       // Completeaza coloana pivotului cu 0
+       // Pivot's column is filled with 0
        for(int i = 0; i < nrRestrictii; i++)
             if( i!= p )
                 tabelSimplex[i][q]=0.0;
-       // Pivotul este egal cu 1
+       // Pivot equals 1
        tabelSimplex[p][q] = 1.0;
     }
     public boolean check(){
         for(int j = 1; j< tabelSimplex[0].length; j++)
             
         if(tabelSimplex[nrRestrictii][j] <= 0)
-            return true; // este optim
+            return true; // optimum solution reached
         return false;
     }
     public void checkOptimal(){
@@ -209,16 +209,16 @@ public class SimplexTest {
             System.arraycopy(tabelSimplex[i], 0, it[i], 0, nrRestrictii+vA);
         iteratii.add(it);
     }
-    public List<double[][]> TabeleSimplexIteratii(){ // returneaza iteratiile
+    public List<double[][]> TabeleSimplexIteratii(){ // returns all the iterations
         return iteratii;
     }
-    public List<int[]> IstoricBaze(){ // returneaza bazele specifice fiecarei iteratii
+    public List<int[]> IstoricBaze(){ // returns the bases of each iteration
         return istoricBaze;
     }
-    public List<Double> IstoricSolutiiOptime(){ // returneaza valoarea functiei obiectiv specifice fiecarei iteratii
+    public List<Double> IstoricSolutiiOptime(){ // returns the value of the objective function of each iteration
         return solutiiOptime;
     }
-    public static double round(double value, int places) { // Rotunjeste cu 2 zecimale.
+    public static double round(double value, int places) { // Rounds to 2 decimals
         if (places < 0) throw new IllegalArgumentException();
 
         BigDecimal bd = BigDecimal.valueOf(value);
