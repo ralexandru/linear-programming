@@ -13,6 +13,12 @@ Simplex Algorithm implemented in Java
 <p align="center">
   <img src="https://media.giphy.com/media/aOeSTRTsvj9M8KMn8N/giphy.gif" alt="Sublime's custom image"/>
 </p>
+<h3>Technologies used</h3>
+------------------------------------------------<br/>
+Programming Language: Java<br/>
+Database: MySQL<br/>
+Interface: JavaFX
+
 <h3>Description of the project</h3>
 -------------------------------------<br/>
 Inside this repository you will find the whole project of the Simplex implementation using Java. The class created in order to solve LP problems using Simplex is the SimpexTest class.<br/>
